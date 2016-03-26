@@ -11,14 +11,15 @@ while True:
 		ser = serial.Serial("/dev/ttyACM0",9600)
 		time.sleep(2)
 		ser.write(b'z')
-		f = open("sample.txt", 'w')
+		serial = open("sample.txt", 'w')
 		print("begin to measure")
 
 		for i in range (1,70):
 			val = ser.readline()
-			print(val.strip().decode('utf-8'))
-		f.write(val.strip().decode('utf-8'))
-		f.close()
+			print(val.decode('utf-8'))
+			serial.write(val.decode('utf-8'))
+
+		serial.close()
 		time = datetime.datetime.now()
 		newname = "{0:%Y%m%d-%H%M%S}.txt".format(time)
 		os.rename("sample.txt",newname)
