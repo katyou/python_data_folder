@@ -20,9 +20,16 @@ while True:
 			serial.write(val.decode('utf-8'))
 
 		serial.close()
+
+		from matplotlib import pyplot as plt
+		import numpy as np
+		x,y = np.loadtxt('sample.txt',delimiter=',',unpack=True)
+		plt.plot(x,y)
+		plt.savefig('sample.png')
+
 		time = datetime.datetime.now()
-		newname = "{0:%Y%m%d-%H%M%S}.txt".format(time)
-		os.rename("sample.txt",newname)
+		newname = "{0:%Y%m%d-%H%M%S}.png".format(time)
+		os.rename("sample.png",newname)
 
 		ser.write(b"y")
 		import time
