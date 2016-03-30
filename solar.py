@@ -28,8 +28,10 @@ while True:
 		plt.savefig('sample.png')
 
 		time = datetime.datetime.now()
-		newname = "{0:%Y%m%d-%H%M%S}.png".format(time)
+		newname = "{0:%Y-%m-%d-%H-%M:%S}.png".format(time)
 		os.rename("sample.png",newname)
+		import os
+		os.remove('sample.txt')
 
 		ser.write(b"y")
 		import time
