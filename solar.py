@@ -49,6 +49,11 @@ while True:
 		ser.close()
 
 	while oclock.hour > 20:
+		os.chdir("/home/pi/Desktop/python_programing") #change directly
+		newdate = datetime.datetime.now()
+		newname = "{0:%Y-%m-%d}".format(newdate)
+		os.rename("sample",newname)
+		
 		time.sleep(60)
 
 	while oclock.hour < 5:
