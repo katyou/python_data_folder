@@ -44,6 +44,9 @@ while True:
 		import os
 		os.remove('sample.txt')
 
+		os.chdir("/home/ienaga/デスクトップ/uploader/public/graph") #change directly
+		plt.savefig('sample.png')
+		
 		ser.write(b"y")
 		time.sleep(10.0)
 		ser.close()
