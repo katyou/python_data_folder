@@ -16,7 +16,7 @@ while True:
 		import shutil
 		import time
 
-		os.chdir("/home/pi/Desktop/python_programing/sample") #change directly
+		os.chdir("/home/ienaga/デスクトップ/solar_measure/python_programing/sample") #change directly
 		ser = serial.Serial("/dev/ttyACM0",9600)
 		time.sleep(2)
 		ser.write(b'z')
