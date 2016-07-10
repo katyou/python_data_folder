@@ -30,12 +30,23 @@ while True:
 
 		serial.close()
 
+
+		#text file caluculate
 		from matplotlib import pyplot as plt
 		import numpy as np
 
-		x,y = np.loadtxt('sample.txt',delimiter = ',',unpack = True)
+		data = np.loadtxt('sample.txt',delimiter = ',',unpack = True)
+
+		plot1 = data[:,0]
+		plot2 = data[:,1]
+
+		x = (plot1*55)/1023
+		y = (plot2*5)/(1023*11)
+
 		plt.plot(x,y)
 		plt.savefig('sample.png')
+		#text file calculate finish
+
 
 		dailytime = datetime.datetime.now()
 		newname = "{0:%Y-%m-%d-%H-%M:%S}.png".format(dailytime)
@@ -50,6 +61,7 @@ while True:
 		ser.write(b"y")
 		time.sleep(10.0)
 		ser.close()
+
 
 	while oclock.hour > 20:
 		os.chdir("/home/pi/Desktop/python_programing") #change directly
