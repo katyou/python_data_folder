@@ -39,13 +39,26 @@ while True:
 		fig = plt.figure()
 		data = np.loadtxt('sample.txt',delimiter = ',',unpack = True)
 
-		plot1 = data[:,0]
-		plot2 = data[:,1]
+		u, i = data[:,0], data[:,1]
 
-		x = (plot1*55)/1023
-		y = (plot2*5)/(1023*11)
+		masmatics = open("test.txt", 'w')
+		for i in range (1,50):
+			x = (u*55)/1023
+			xray = str(x)
+			masmatics.write(xray)
 
-		plt.plot(x,y)
+			masmatics.write(",")
+
+			y = (i*5)/(1023*11)
+			yray = str(y)
+			masmatics.write(yray)
+
+		masmatics.close()
+
+		fig = plt.figure()
+		data = np.loadtxt('test.txt',delimiter = ',',unpack = True)
+
+		plt.plot(x, y)
 		plt.savefig('sample.png')
 		#text file calculate finish
 

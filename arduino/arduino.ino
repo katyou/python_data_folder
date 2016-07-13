@@ -13,7 +13,7 @@ void loop()
     a = Serial.read();
     if (a == 'z')
     {
-      delay(20);
+      delay(50);
       digitalWrite(8,LOW);
       Measure();
     }
@@ -28,8 +28,8 @@ void Measure()
 {
   float Vi;
   float Im;
-  float v[100];
-  float i[100];
+  float v[50];
+  float i[50];
   int x;
   for(x = 1; x <= 50; x++)
   {
@@ -38,7 +38,7 @@ void Measure()
     Im = analogRead(A5);
     i[x] = Im;
     
-    delayMicroseconds(1000);
+    delay(400);
   }
   delay(5000);
   for(x = 1; x <= 50; x++)
