@@ -28,37 +28,26 @@ while True:
 			print(val.decode('utf-8'))
 			serial.write(val.decode('utf-8'))
 
+		ser.write(b"y")
 		serial.close()
 
-		ser.write(b"y")
-
 		#text file caluculate
+
 		from matplotlib import pyplot as plt
 		import numpy as np
 
 		fig = plt.figure()
-		data = np.loadtxt('sample.txt',delimiter = ',',unpack = True)
+		data = np.loadtxt('sample.txt', delimiter = ',', unpack = True)
 
-		u, i = data[:,0], data[:,1]
+		plot1 = data[:,0]
+		plot2 = data[:,1]
 
-		masmatics = open("test.txt", 'w')
-		for i in range (1,50):
-			x = (u*55)/1023
-			xray = str(x)
-			masmatics.write(xray)
+		for line in range (1,50):
+			voltage = (plot1*55)/1023
+			current = (plot2*5)/(1023*11)
 
-			masmatics.write(",")
+		plt.plot(voltage, current)
 
-			y = (i*5)/(1023*11)
-			yray = str(y)
-			masmatics.write(yray)
-
-		masmatics.close()
-
-		fig = plt.figure()
-		data = np.loadtxt('test.txt',delimiter = ',',unpack = True)
-
-		plt.plot(x, y)
 		plt.savefig('sample.png')
 		#text file calculate finish
 
