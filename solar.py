@@ -44,7 +44,7 @@ while True:
 			voltage = (xm*55)/1023
 			current = (ym*5)/(1023*11)
 
-		plt.plot(voltage, current)
+		plt.plot(voltage, current, '-o')
 
 		plt.savefig('sample.png')
 		#text file calculate finish
@@ -73,7 +73,6 @@ while True:
 
 	while oclock.hour < 5:
 		time.sleep(120)
-
 
 def png():   #sub function 
 	import os
