@@ -37,14 +37,12 @@ while True:
 		import numpy as np
 
 		fig = plt.figure()
-		data = np.loadtxt('sample.txt', delimiter = ',', unpack = True)
+		xm, ym = np.loadtxt('sample.txt', delimiter = ',', unpack = True)
 
-		plot1 = data[:,0]
-		plot2 = data[:,1]
-
+		#calculate arduino
 		for line in range (1,50):
-			voltage = (plot1*55)/1023
-			current = (plot2*5)/(1023*11)
+			voltage = (xm*55)/1023
+			current = (ym*5)/(1023*11)
 
 		plt.plot(voltage, current)
 
